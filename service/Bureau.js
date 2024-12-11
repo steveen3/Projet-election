@@ -2,8 +2,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'SIGDB',
-  password: 'password',
+  database: 'sigdb',
+  password: '12345678',
   port: 5432,
 })
 
@@ -20,7 +20,7 @@ const getBureau = (request, response) => {
       response.status(200).json(results.rows)
     })
   }
-
+ 
 
   ///
   const getBureauById = (request, response) => {

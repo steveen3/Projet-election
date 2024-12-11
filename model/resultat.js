@@ -4,8 +4,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'SIGDB',
-  password: 'password',
+  database: 'sigdb',
+  password: '12345678',
   port: 5432,
 });
 
@@ -18,7 +18,7 @@ async function createTable() {
     const query = `
       CREATE TABLE IF NOT EXISTS resultat (
         id SERIAL PRIMARY KEY,
-        bureau_id STRING NOT NULL,
+        bureau_id INT NOT NULL,
         candidat_id INT NOT NULL,
         nbr_voix INT NOT NULL
       );

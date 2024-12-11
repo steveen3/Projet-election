@@ -4,8 +4,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'SIGDB',
-  password: 'password',
+  database: 'sigdb',
+  password: '12345678',
   port: 5432,
 });
 async function createBureauTable() {

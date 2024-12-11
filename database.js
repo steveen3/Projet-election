@@ -4,8 +4,8 @@ const client = new Client({
   user: 'postgres',
   host: 'localhost',
   database: 'SIGDB',
-  password: 'password',
-  port: 5432, // Port par défaut de PostgreSQL
+  password: '12345678',
+  port: 5432,
 });
 
 
