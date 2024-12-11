@@ -5,6 +5,16 @@ const bodyParser = require("body-parser");
 const port = 3001;
 const db = require("./service/Bureau")
 const route =require("./route/Bureau")
+
+////Entity//////////
+const modelresult =require("./model/resultat")
+const modeluser =require("./model/User")
+const modelbureau =require("./model/Bureau")
+const modelcandidat =require("./model/Candidat")
+
+
+
+////////////
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
@@ -17,6 +27,7 @@ app.use((_, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
+
 
 
 const Bureau = require('./route/Bureau');
