@@ -35,5 +35,6 @@ async function createCandidatTable() {
   }
 }
 
+
 // Exécution de la fonction
 createCandidatTable();

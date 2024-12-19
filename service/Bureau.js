@@ -36,7 +36,8 @@ const getBureau = (request, response) => {
 
   //
 
-  const createBureau = (request, response) => {
+  /* const createBureau = (request, response) => {
+      
     const { name,matricule,region,departement,arrondissement,nbr_electeur } = request.body
     console.log("ok")
   
@@ -46,7 +47,28 @@ const getBureau = (request, response) => {
       }
       response.status(201).send(`Bureau added with ID: ${results.rows[0].id}`)
     })
-  }
+  } */
+
+    const createBureau = (request, response) => {
+      const { name, matricule, region, departement, arrondissement, nbr_electeur, userRole } = request.body;
+    
+      // Vérification du rôle de l'utilisateur
+      if (userRole !== 'scrutateur') {
+        return response.status(403).send("Erreur : seul un scrutateur peut créer un bureau de vote.");
+      }
+    
+      pool.query(
+        'INSERT INTO bureau (name, matricule, region, departement, arrondissement, nbr_electeur) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [name, matricule, region, departement, arrondissement, nbr_electeur],
+        (error, results) => {
+          if (error) {
+            console.error("Erreur lors de l'insertion du bureau:", error);
+            return response.status(500).send("Erreur lors de la création du bureau de vote.");
+          }
+          response.status(201).send(`Bureau ajouté avec ID: ${results.rows[0].id}`);
+        }
+      );
+    };
 
   //
   const updateBureau = (request, response) => {
